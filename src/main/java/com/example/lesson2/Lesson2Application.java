@@ -1,12 +1,16 @@
 package com.example.lesson2;
 
-import com.example.lesson2.tasks.task1.EmployeeServiceTask1;
-import com.example.lesson2.tasks.task2.EmployeeServiceTask2;
+import com.example.lesson2.tasks.task1.Task1Service;
+import com.example.lesson2.tasks.task2.Task2Service;
+import com.example.lesson2.tasks.task4.Task4Service;
+import com.example.lesson2.tasks.task6.Task6Service;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableAsync;
 
+@EnableAsync
 @SpringBootApplication
 public class Lesson2Application {
     public static void main(String[] args) {
@@ -15,12 +19,14 @@ public class Lesson2Application {
 
     @Bean
     public CommandLineRunner commandLineRunner(
-            EmployeeServiceTask1 employeeServiceTask1,
-            EmployeeServiceTask2 employeeServiceTask2
+            Task1Service task1Service,
+            Task2Service task2Service,
+            Task4Service task4Service
     ) {
         return (String[] args) -> {
-            employeeServiceTask1.printEmployees();
-            employeeServiceTask2.printEmployees();
+            task1Service.printEmployees();
+            task2Service.sendMessage();
+            task4Service.printEmployeesBeanInfo();
         };
     }
 }

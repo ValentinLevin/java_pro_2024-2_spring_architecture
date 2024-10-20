@@ -2,19 +2,17 @@ package com.example.lesson2.tasks.task1;
 
 import com.example.lesson2.model.Employee;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-public class EmployeeServiceTask1 {
+public class Task1Service {
     private final Employee employeeByAnnotation;
     private final Employee employeeByJava;
     private final Employee employeeByXml;
 
-    public EmployeeServiceTask1(
+    public Task1Service(
             @Qualifier("employeeByAnnotation") Employee employeeByAnnotation,
             @Qualifier("employeeByJava") Employee employeeByJava,
             @Qualifier("employeeByXml") Employee employeeByXml
@@ -25,6 +23,7 @@ public class EmployeeServiceTask1 {
     }
 
     public void printEmployees() {
+        log.info("");
         log.info("task1 ------------------------");
         log.info("task1. Employee created using an annotation: {}", this.employeeByAnnotation);
         log.info("task1. Employee created using an java code: {}", this.employeeByJava);
